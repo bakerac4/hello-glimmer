@@ -14,7 +14,6 @@ let _default: ResolverConfiguration;
 let resolverConfiguration = _default;
 
 export default class App extends Application {
-  public document: null;
   constructor(document, frame) {
     let moduleRegistry = new BasicModuleRegistry(moduleMap);
     let resolver = new Resolver(resolverConfiguration, moduleRegistry);
