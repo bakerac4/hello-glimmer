@@ -1,20 +1,39 @@
 const map = require('@glimmer/reference').map;
 const TEMPLATE_ONLY_COMPONENT = require("@glimmer/runtime").TEMPLATE_ONLY_COMPONENT;
 const SimpleComponentManager = require("@glimmer/runtime").SimpleComponentManager;
-// const HelloGlimmer = require('../../src/ui/components/HelloGlimmer/component');
+// const HelloGlimmer = require('../../src/ui/components/HelloGlimmer/component').HelloGlimmer;
+
+// import HelloGlimmer from '../../src/ui/components/HelloGlimmer/component';
 // import ComponentDefinitionImpl from '@glimmer/component/src/component-definition';
 const NativeComponentManager = require("./native-component-manager").NativeComponentManager;
 const NativeComponent = require("./native-component").NativeComponent;
+const ComponentFactory = require("./native-component").ComponentFactory;
+// import NativeComponent from './native-component';
 const opcodeCompiler = require('@glimmer/opcode-compiler');
 const EnvironmentImpl = require('@glimmer/runtime').EnvironmentImpl;
 const DocumentNode = require('../dom/DocumentNode');
 
 
-const {
-  Component,
-  MINIMAL_CAPABILITIES,
-  DEFAULT_CAPABILITIES
-} = opcodeCompiler;
+class HelloGlimmer extends NativeComponent {
+  title = 'Hi';
+}
+
+
+const CAPABILITIES = {
+  attributeHook: true,
+  createArgs: true,
+  createCaller: false,
+  createInstance: true,
+  dynamicLayout: false,
+  dynamicScope: false,
+  dynamicTag: true,
+  elementHook: true,
+  prepareArgs: false,
+  updateHook: true,
+  wrapped: false,
+};
+
+
 // prettier-ignore
 const TABLE = [
   // handle 0 is the increment helper
@@ -26,8 +45,8 @@ const TABLE = [
   {
     state: {
       name: 'HelloGlimmer',
-      capabilities: DEFAULT_CAPABILITIES,
-      ComponentClass: NativeComponent,
+      capabilities: CAPABILITIES,
+      ComponentClass: HelloGlimmer,
       handle: 2,
       hasSymbolTable: true
     },

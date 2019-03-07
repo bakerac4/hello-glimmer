@@ -79,6 +79,7 @@ module.exports = env => {
                 resolve(__dirname, "node_modules/tns-core-modules"),
                 resolve(__dirname, "node_modules"),
                 resolve(__dirname, "lib"),
+                resolve(__dirname, "src"),
                 "node_modules/tns-core-modules",
                 "node_modules"
             ],

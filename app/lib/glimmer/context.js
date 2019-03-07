@@ -6,6 +6,21 @@ const {
   DEFAULT_CAPABILITIES
 } = opcodeCompiler;
 
+const CAPABILITIES = {
+  attributeHook: true,
+  createArgs: true,
+  createCaller: false,
+  createInstance: true,
+  dynamicLayout: false,
+  dynamicScope: false,
+  dynamicTag: true,
+  elementHook: true,
+  prepareArgs: false,
+  updateHook: true,
+  wrapped: false,
+};
+
+
 /**
  * Ideally we precompile all the templates through a
  * through a plugin at build time. This is done just
@@ -31,7 +46,7 @@ const COMPONENTS = {
       </actionbar>
     `,
     handle: 2,
-    capabilities: DEFAULT_CAPABILITIES
+    capabilities: CAPABILITIES
   }
 };
 const HELPERS = {
